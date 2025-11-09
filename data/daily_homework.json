@@ -11,5 +11,117 @@
       { "id": 1, "content": "수학 익힘책 2쪽 풀기" },
       { "id": 2, "content": "일기 쓰기" }
     ]
+  },
+  {
+    "id": 2,
+    "schoolId": 1,
+    "grade": 3,
+    "class": 5,
+    "uploadDate": "2025-11-08",
+    "dueDate": "2025-11-09",
+    "title": "11월 8일 숙제",
+    "tasks": [
+      { "id": 1, "content": "국어 활동 10~12쪽" },
+      { "id": 2, "content": "줄넘기 100번 하기" }
+    ]
+  },
+  {
+    "id": 3,
+    "schoolId": 1,
+    "grade": 3,
+    "class": 5,
+    "uploadDate": "2025-11-07",
+    "dueDate": "2025-11-08",
+    "title": "11월 7일 숙제",
+    "tasks": [
+      { "id": 1, "content": "사회과 부도 5쪽 색칠하기" }
+    ]
+  },
+  {
+    "id": 4,
+    "schoolId": 2,
+    "grade": 1,
+    "class": 2,
+    "uploadDate": "2025-11-09",
+    "dueDate": "2025-11-10",
+    "title": "11월 9일 다른 학교 숙제",
+    "tasks": [
+      { "id": 1, "content": "그림 그리기" }
+    ]
+  },
+  {
+    "id": 5,
+    "schoolId": 1,
+    "grade": 3,
+    "class": 5,
+    "uploadDate": "2025-11-06",
+    "dueDate": "2025-11-07",
+    "title": "11월 6일 숙제",
+    "tasks": [
+      { "id": 1, "content": "영어 교과서 3번 따라 쓰기" },
+      { "id": 2, "content": "부모님 도와드리기" }
+    ]
+  },
+  {
+    "id": 6,
+    "schoolId": 1,
+    "grade": 3,
+    "class": 5,
+    "uploadDate": "2025-11-05",
+    "dueDate": "2025-11-06",
+    "title": "11월 5일 숙제",
+    "tasks": [
+      { "id": 1, "content": "수학 문제집 1장 풀기" },
+      { "id": 2, "content": "책 20쪽 읽기" }
+    ]
+  },
+  {
+    "id": 7,
+    "schoolId": 1,
+    "grade": 3,
+    "class": 5,
+    "uploadDate": "2025-11-04",
+    "dueDate": "2025-11-05",
+    "title": "11월 4일 숙제",
+    "tasks": [
+      { "id": 1, "content": "받아쓰기 연습" }
+    ]
+  },
+  {
+    "id": 8,
+    "schoolId": 1,
+    "grade": 3,
+    "class": 5,
+    "uploadDate": "2025-11-03",
+    "dueDate": "2025-11-04",
+    "title": "11월 3일 숙제",
+    "tasks": [
+      { "id": 1, "content": "과학 실험 보고서 쓰기" },
+      { "id": 2, "content": "한자 5번 쓰기" }
+    ]
+  },
+  {
+    "id": 9,
+    "schoolId": 1,
+    "grade": 3,
+    "class": 5,
+    "uploadDate": "2025-11-10",
+    "dueDate": "2025-11-11",
+    "title": "11월 10일 숙제",
+    "tasks": [
+      { "id": 1, "content": "미술 준비물 챙겨오기" }
+    ]
+  },
+  {
+    "id": 10,
+    "schoolId": 1,
+    "grade": 3,
+    "class": 4,
+    "uploadDate": "2025-11-09",
+    "dueDate": "2025-11-10",
+    "title": "11월 9일 4반 숙제",
+    "tasks": [
+      { "id": 1, "content": "4반 숙제입니다." }
+    ]
   }
 ]

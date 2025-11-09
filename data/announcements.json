@@ -7,5 +7,86 @@
     "uploadDate": "2025-11-09",
     "title": "현장체험학습 안내",
     "content": "내일은 현장체험학습 가는 날입니다. 준비물을 잘 챙겨오세요."
+  },
+  {
+    "id": 2,
+    "schoolId": 1,
+    "grade": 3,
+    "class": 5,
+    "uploadDate": "2025-11-08",
+    "title": "가정통신문 배부",
+    "content": "오늘 배부된 가정통신문을 부모님께 꼭 전달해주세요."
+  },
+  {
+    "id": 3,
+    "schoolId": 1,
+    "grade": 3,
+    "class": 5,
+    "uploadDate": "2025-11-07",
+    "title": "학급 회의 결과",
+    "content": "다음 주 학급 회의 안건은 '우리 반 규칙 정하기' 입니다."
+  },
+  {
+    "id": 4,
+    "schoolId": 2,
+    "grade": 1,
+    "class": 2,
+    "uploadDate": "2025-11-09",
+    "title": "알림장",
+    "content": "내일은 1교시 수업이 없습니다."
+  },
+  {
+    "id": 5,
+    "schoolId": 1,
+    "grade": 3,
+    "class": 5,
+    "uploadDate": "2025-10-30",
+    "title": "방과후학교 신청 안내",
+    "content": "방과후학교 4분기 신청이 시작되었습니다. 많은 참여 바랍니다."
+  },
+  {
+    "id": 6,
+    "schoolId": 1,
+    "grade": 3,
+    "class": 4,
+    "uploadDate": "2025-11-09",
+    "title": "다른 반 공지",
+    "content": "이것은 4반 공지입니다."
+  },
+  {
+    "id": 7,
+    "schoolId": 1,
+    "grade": 2,
+    "class": 5,
+    "uploadDate": "2025-11-09",
+    "title": "다른 학년 공지",
+    "content": "이것은 2학년 공지입니다."
+  },
+  {
+    "id": 8,
+    "schoolId": 1,
+    "grade": 3,
+    "class": 5,
+    "uploadDate": "2025-11-10",
+    "title": "미술 준비물 안내",
+    "content": "내일 미술 시간에는 색연필과 스케치북이 필요합니다."
+  },
+  {
+    "id": 9,
+    "schoolId": 1,
+    "grade": 3,
+    "class": 5,
+    "uploadDate": "2025-11-11",
+    "title": "음악 시험 안내",
+    "content": "다음 주 음악 시간에는 리코더 실기 시험이 있습니다."
+  },
+  {
+    "id": 10,
+    "schoolId": 1,
+    "grade": 3,
+    "class": 5,
+    "uploadDate": "2025-11-05",
+    "title": "도서관 이용 안내",
+    "content": "이번 주부터 도서관을 정상적으로 이용할 수 있습니다."
   }
 ]
