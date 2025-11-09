@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classnote - 환영합니다</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <!-- 3초 후 학교 선택 페이지로 이동 -->
-    <meta http-equiv="refresh" content="3;url=school-select.html">
+    <title>ClassNote</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="container">
-        <div id="page-intro" class="page">
-            <h1>Classnote</h1>
-            <p>환영합니다!</p>
-            <p>잠시 후 학교 선택 페이지로 이동합니다.</p>
-        </div>
+    <div id="splash-screen">
+        <img src="{{ url_for('static', filename='logo/logo.png') }}" alt="ClassNote Logo" class="splash-logo">
     </div>
-    <!-- <script src="../assets/js/script.js"></script> -->
+    
+    <!-- Main content will be loaded here later -->
+    <div id="main-content" style="display: none;">
+        <h1>Welcome to ClassNote</h1>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

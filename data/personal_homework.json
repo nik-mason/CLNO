@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "schoolId": 1,
+    "grade": 3,
+    "class": 5,
+    "attendanceNumber": 10,
+    "uploadDate": "2025-11-09",
+    "dueDate": "2025-11-11",
+    "title": "받아쓰기 연습 (김철수)",
+    "tasks": [
+      { "id": 1, "content": "1단원 받아쓰기 10번 연습하기" }
+    ]
+  }
+]

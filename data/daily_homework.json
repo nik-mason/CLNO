@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "schoolId": 1,
+    "grade": 3,
+    "class": 5,
+    "uploadDate": "2025-11-09",
+    "dueDate": "2025-11-10",
+    "title": "11월 9일 숙제",
+    "tasks": [
+      { "id": 1, "content": "수학 익힘책 2쪽 풀기" },
+      { "id": 2, "content": "일기 쓰기" }
+    ]
+  }
+]
