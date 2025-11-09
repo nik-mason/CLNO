@@ -12,6 +12,15 @@ def load_data(filename):
     except (IOError, json.JSONDecodeError):
         return None
 
+# Helper to save data to JSON files
+def save_data(filename, data):
+    try:
+        with open(os.path.join('data', filename), 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        return True
+    except IOError:
+        return False
+
 # Helper to verify class password
 def verify_class_password(school_id, grade, class_num, password):
     passwords = load_data('passwords.json')
@@ -146,6 +155,86 @@ def get_personal_homework():
     ]
 
     return jsonify(filtered_personal_homework)
+
+# --- Teacher Upload APIs ---
+
+@app.route('/api/upload/announcement', methods=['POST'])
+def upload_announcement():
+    data = request.get_json()
+    if not data or not all(k in data for k in ['title', 'content', 'schoolId', 'grade', 'classNum']):
+        return jsonify({"success": False, "message": "모든 필드를 입력해주세요."}), 400
+
+    announcements = load_data('announcements.json') or []
+    new_id = max([ann.get('id', 0) for ann in announcements] + [0]) + 1
+    
+    new_announcement = {
+        "id": new_id,
+        "schoolId": int(data['schoolId']),
+        "grade": int(data['grade']),
+        "class": int(data['classNum']),
+        "uploadDate": "2025-11-09", # Placeholder, ideally use current date
+        "title": data['title'],
+        "content": data['content']
+    }
+    announcements.append(new_announcement)
+
+    if save_data('announcements.json', announcements):
+        return jsonify({"success": True, "message": "공지사항이 등록되었습니다."})
+    else:
+        return jsonify({"success": False, "message": "공지사항 저장에 실패했습니다."}), 500
+
+@app.route('/api/upload/daily_homework', methods=['POST'])
+def upload_daily_homework():
+    data = request.get_json()
+    if not data or not all(k in data for k in ['title', 'dueDate', 'tasks', 'schoolId', 'grade', 'classNum']):
+        return jsonify({"success": False, "message": "모든 필드를 입력해주세요."}), 400
+
+    homeworks = load_data('daily_homework.json') or []
+    new_id = max([hw.get('id', 0) for hw in homeworks] + [0]) + 1
+
+    new_homework = {
+        "id": new_id,
+        "schoolId": int(data['schoolId']),
+        "grade": int(data['grade']),
+        "class": int(data['classNum']),
+        "uploadDate": "2025-11-09", # Placeholder
+        "dueDate": data['dueDate'],
+        "title": data['title'],
+        "tasks": [{"id": i+1, "content": task} for i, task in enumerate(data['tasks'])]
+    }
+    homeworks.append(new_homework)
+
+    if save_data('daily_homework.json', homeworks):
+        return jsonify({"success": True, "message": "오늘의 숙제가 등록되었습니다."})
+    else:
+        return jsonify({"success": False, "message": "숙제 저장에 실패했습니다."}), 500
+
+@app.route('/api/upload/personal_homework', methods=['POST'])
+def upload_personal_homework():
+    data = request.get_json()
+    if not data or not all(k in data for k in ['title', 'dueDate', 'tasks', 'schoolId', 'grade', 'classNum', 'attendanceNum']):
+        return jsonify({"success": False, "message": "모든 필드를 입력해주세요."}), 400
+
+    homeworks = load_data('personal_homework.json') or []
+    new_id = max([hw.get('id', 0) for hw in homeworks] + [0]) + 1
+
+    new_homework = {
+        "id": new_id,
+        "schoolId": int(data['schoolId']),
+        "grade": int(data['grade']),
+        "class": int(data['classNum']),
+        "attendanceNumber": int(data['attendanceNum']),
+        "uploadDate": "2025-11-09", # Placeholder
+        "dueDate": data['dueDate'],
+        "title": data['title'],
+        "tasks": [{"id": i+1, "content": task} for i, task in enumerate(data['tasks'])]
+    }
+    homeworks.append(new_homework)
+
+    if save_data('personal_homework.json', homeworks):
+        return jsonify({"success": True, "message": "개인 숙제가 등록되었습니다."})
+    else:
+        return jsonify({"success": False, "message": "숙제 저장에 실패했습니다."}), 500
 
 if __name__ == '__main__':
     app.run(debug=True) 

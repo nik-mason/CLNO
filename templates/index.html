@@ -122,13 +122,17 @@
             </main>
         </div>
 
-        <!-- Teacher Main Page (Placeholder) -->
+        <!-- Teacher Main Page -->
         <div id="teacher-main-screen" class="screen animated-screen">
             <header>
-                <h2>선생님 메인</h2>
+                <h2>선생님 메뉴</h2>
             </header>
             <main>
-                <p>선생님 페이지입니다.</p>
+                <ul class="menu-list">
+                    <li><button class="menu-button" id="upload-announcement-btn">공지사항 올리기</button></li>
+                    <li><button class="menu-button" id="upload-daily-homework-btn">오늘의 숙제 올리기</button></li>
+                    <li><button class="menu-button" id="upload-personal-homework-btn">개인 숙제 올리기</button></li>
+                </ul>
             </main>
         </div>
 
@@ -162,6 +166,87 @@
             </header>
             <main id="personal-homework-list">
                 <!-- Personal homework will be loaded here -->
+            </main>
+        </div>
+
+        <!-- Announcement Upload Page -->
+        <div id="announcement-upload-screen" class="screen animated-screen">
+            <header>
+                <h2>공지사항 올리기</h2>
+                <button id="back-to-teacher-main-from-announcement-upload" class="back-button">뒤로</button>
+            </header>
+            <main>
+                <form id="announcement-upload-form">
+                    <div class="input-group">
+                        <label for="announcement-title">제목</label>
+                        <input type="text" id="announcement-title" class="clno-input" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="announcement-content">내용</label>
+                        <textarea id="announcement-content" class="clno-input" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="clno-button">등록하기</button>
+                </form>
+            </main>
+        </div>
+
+        <!-- Daily Homework Upload Page -->
+        <div id="daily-homework-upload-screen" class="screen animated-screen">
+            <header>
+                <h2>오늘의 숙제 올리기</h2>
+                <button id="back-to-teacher-main-from-daily-homework-upload" class="back-button">뒤로</button>
+            </header>
+            <main>
+                <form id="daily-homework-upload-form">
+                    <div class="input-group">
+                        <label for="daily-homework-title">숙제 제목</label>
+                        <input type="text" id="daily-homework-title" class="clno-input" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="daily-homework-due-date">마감일</label>
+                        <input type="date" id="daily-homework-due-date" class="clno-input" required>
+                    </div>
+                    <div class="input-group">
+                        <label>숙제 내용</label>
+                        <div id="daily-homework-tasks-container">
+                            <!-- Tasks will be added here dynamically -->
+                        </div>
+                        <button type="button" id="add-daily-homework-task-btn" class="clno-button secondary-btn">항목 추가</button>
+                    </div>
+                    <button type="submit" class="clno-button">등록하기</button>
+                </form>
+            </main>
+        </div>
+
+        <!-- Personal Homework Upload Page -->
+        <div id="personal-homework-upload-screen" class="screen animated-screen">
+            <header>
+                <h2>개인 숙제 올리기</h2>
+                <button id="back-to-teacher-main-from-personal-homework-upload" class="back-button">뒤로</button>
+            </header>
+            <main>
+                <form id="personal-homework-upload-form">
+                    <div class="input-group">
+                        <label for="personal-homework-attendance-number">출석번호</label>
+                        <input type="number" id="personal-homework-attendance-number" class="clno-input" placeholder="숙제를 받을 학생의 출석번호" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="personal-homework-title">숙제 제목</label>
+                        <input type="text" id="personal-homework-title" class="clno-input" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="personal-homework-due-date">마감일</label>
+                        <input type="date" id="personal-homework-due-date" class="clno-input" required>
+                    </div>
+                    <div class="input-group">
+                        <label>숙제 내용</label>
+                        <div id="personal-homework-tasks-container">
+                            <!-- Tasks will be added here dynamically -->
+                        </div>
+                        <button type="button" id="add-personal-homework-task-btn" class="clno-button secondary-btn">항목 추가</button>
+                    </div>
+                    <button type="submit" class="clno-button">등록하기</button>
+                </form>
             </main>
         </div>
     </div>

@@ -142,6 +142,100 @@ function setupEventListeners() {
     document.getElementById('back-to-student-main-from-daily-homework').addEventListener('click', () => showPage('student-main-screen'));
     document.getElementById('view-personal-homework-btn').addEventListener('click', showPersonalHomework);
     document.getElementById('back-to-student-main-from-personal-homework').addEventListener('click', () => showPage('student-main-screen'));
+
+    // Teacher Menu Navigation
+    document.getElementById('upload-announcement-btn').addEventListener('click', () => showPage('announcement-upload-screen'));
+    document.getElementById('back-to-teacher-main-from-announcement-upload').addEventListener('click', () => showPage('teacher-main-screen'));
+    
+    document.getElementById('upload-daily-homework-btn').addEventListener('click', () => {
+        showPage('daily-homework-upload-screen');
+        addHomeworkTask('daily-homework-tasks-container'); // Add one task field by default
+    });
+    document.getElementById('back-to-teacher-main-from-daily-homework-upload').addEventListener('click', () => showPage('teacher-main-screen'));
+
+    document.getElementById('upload-personal-homework-btn').addEventListener('click', () => {
+        showPage('personal-homework-upload-screen');
+        addHomeworkTask('personal-homework-tasks-container'); // Add one task field by default
+    });
+    document.getElementById('back-to-teacher-main-from-personal-homework-upload').addEventListener('click', () => showPage('teacher-main-screen'));
+
+    // Dynamic Task Input Fields
+    document.getElementById('add-daily-homework-task-btn').addEventListener('click', () => addHomeworkTask('daily-homework-tasks-container'));
+    document.getElementById('add-personal-homework-task-btn').addEventListener('click', () => addHomeworkTask('personal-homework-tasks-container'));
+
+    // Teacher Form Submissions
+    document.getElementById('announcement-upload-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const title = document.getElementById('announcement-title').value;
+        const content = document.getElementById('announcement-content').value;
+        
+        const result = await apiCall('/api/upload/announcement', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ...appState, title, content })
+        });
+
+        if (result?.success) {
+            showModal('공지사항이 성공적으로 등록되었습니다.');
+            e.target.reset();
+            showPage('teacher-main-screen');
+        }
+    });
+
+    document.getElementById('daily-homework-upload-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const title = document.getElementById('daily-homework-title').value;
+        const dueDate = document.getElementById('daily-homework-due-date').value;
+        const tasks = Array.from(document.querySelectorAll('#daily-homework-tasks-container .homework-task-input'))
+                           .map(input => input.value)
+                           .filter(value => value.trim() !== '');
+
+        if (tasks.length === 0) {
+            showModal('숙제 내용을 하나 이상 입력해주세요.');
+            return;
+        }
+
+        const result = await apiCall('/api/upload/daily_homework', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ...appState, title, dueDate, tasks })
+        });
+
+        if (result?.success) {
+            showModal('오늘의 숙제가 성공적으로 등록되었습니다.');
+            e.target.reset();
+            document.getElementById('daily-homework-tasks-container').innerHTML = '';
+            showPage('teacher-main-screen');
+        }
+    });
+
+    document.getElementById('personal-homework-upload-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const attendanceNum = document.getElementById('personal-homework-attendance-number').value;
+        const title = document.getElementById('personal-homework-title').value;
+        const dueDate = document.getElementById('personal-homework-due-date').value;
+        const tasks = Array.from(document.querySelectorAll('#personal-homework-tasks-container .homework-task-input'))
+                           .map(input => input.value)
+                           .filter(value => value.trim() !== '');
+
+        if (tasks.length === 0) {
+            showModal('숙제 내용을 하나 이상 입력해주세요.');
+            return;
+        }
+
+        const result = await apiCall('/api/upload/personal_homework', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ...appState, title, dueDate, tasks, attendanceNum })
+        });
+
+        if (result?.success) {
+            showModal('개인 숙제가 성공적으로 등록되었습니다.');
+            e.target.reset();
+            document.getElementById('personal-homework-tasks-container').innerHTML = '';
+            showPage('teacher-main-screen');
+        }
+    });
 }
 
 // --- Feature Implementations ---
@@ -255,6 +349,16 @@ async function showPersonalHomework() {
                 personalHomeworkList.appendChild(hwEl);
             });
     }
+}
+
+function addHomeworkTask(containerId) {
+    const container = document.getElementById(containerId);
+    const taskInput = document.createElement('input');
+    taskInput.type = 'text';
+    taskInput.className = 'clno-input homework-task-input';
+    taskInput.placeholder = '숙제 내용을 입력하세요';
+    taskInput.required = true;
+    container.appendChild(taskInput);
 }
 
 
