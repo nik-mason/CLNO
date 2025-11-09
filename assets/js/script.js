@@ -163,6 +163,15 @@ function setupEventListeners() {
     document.getElementById('add-daily-homework-task-btn').addEventListener('click', () => addHomeworkTask('daily-homework-tasks-container'));
     document.getElementById('add-personal-homework-task-btn').addEventListener('click', () => addHomeworkTask('personal-homework-tasks-container'));
 
+    // Universal Back Buttons
+    document.getElementById('back-to-school-selection').addEventListener('click', () => showPage('school-selection-screen'));
+    document.getElementById('back-to-class-input').addEventListener('click', () => showPage('class-input-screen'));
+    document.getElementById('back-to-role-selection-student').addEventListener('click', () => showPage('role-selection-screen'));
+    document.getElementById('back-to-role-selection-teacher').addEventListener('click', () => showPage('role-selection-screen'));
+    document.getElementById('back-to-role-selection-from-student-main').addEventListener('click', () => showPage('role-selection-screen'));
+    document.getElementById('back-to-role-selection-from-teacher-main').addEventListener('click', () => showPage('role-selection-screen'));
+
+
     // Teacher Form Submissions
     document.getElementById('announcement-upload-form').addEventListener('submit', async (e) => {
         e.preventDefault();

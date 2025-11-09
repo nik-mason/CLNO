@@ -140,32 +140,32 @@ body.dark-mode h2 {
 
 /* --- [기본/폼 요소 스타일] --- */
 #school-selection-screen { padding-top: 20px; }
-#search-input { width: 100%; padding: 12px 15px; margin-bottom: 20px; border: 2px solid #50506e; border-radius: 8px; background-color: #3e3e5c; color: var(--text-color-dark); font-size: 1rem; }
+#search-input { width: 100%; padding: 12px 15px; margin-bottom: 20px; border: 2px solid #50506e; border-radius: 8px; background-color: #3e3e5c; color: var(--text-color-dark); font-size: 1rem; font-family: 'BMJUA', sans-serif; }
 #search-input:focus { border-color: var(--primary-color-dark); outline: none; }
 #school-list { max-height: 400px; overflow-y: auto; padding: 0; margin: 0; list-style: none; }
 .school-item { display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 1px solid #444; cursor: pointer; transition: background-color 0.2s; }
 .school-item:hover { background-color: #4a4a6e; }
-.select-button { background-color: transparent; color: var(--primary-color-dark); border: 1px solid var(--primary-color-dark); padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.9rem; transition: background-color 0.2s, color 0.2s; }
+.select-button { background-color: transparent; color: var(--primary-color-dark); border: 1px solid var(--primary-color-dark); padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.9rem; transition: background-color 0.2s, color 0.2s; font-family: 'BMJUA', sans-serif; }
 .select-button:hover { background-color: var(--primary-color-dark); color: white; }
 .selection-box, .input-group { margin-bottom: 25px; }
 .input-group label, .selection-box label { display: block; margin-bottom: 8px; font-size: 1rem; color: var(--primary-color-dark); }
-.clno-input, .clno-select { width: 100%; padding: 12px 15px; border: 1px solid #50506e; border-radius: 8px; background-color: #3e3e5c; color: var(--text-color-dark); font-size: 1rem; box-sizing: border-box; }
+.clno-input, .clno-select { width: 100%; padding: 12px 15px; border: 1px solid #50506e; border-radius: 8px; background-color: #3e3e5c; color: var(--text-color-dark); font-size: 1rem; box-sizing: border-box; font-family: 'BMJUA', sans-serif; }
 .clno-input:focus, .clno-select:focus { border-color: var(--primary-color-dark); outline: none; }
 .guide-text { font-size: 0.8rem; color: #999; margin-top: 5px; }
-.clno-button { width: 100%; padding: 15px; border: none; border-radius: 8px; background-color: var(--primary-color-dark); color: white; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-top: 20px; transition: background-color 0.3s; }
+.clno-button { width: 100%; padding: 15px; border: none; border-radius: 8px; background-color: var(--primary-color-dark); color: white; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-top: 20px; transition: background-color 0.3s; font-family: 'BMJUA', sans-serif; }
 .clno-button:hover { background-color: #8c68e6; }
 #grade-selection-screen { padding-top: 20px; }
 .role-options { display: flex; flex-direction: column; gap: 20px; padding: 20px 0; }
-.role-button { width: 100%; padding: 30px 20px; border: 2px solid var(--primary-color-dark); border-radius: 12px; background-color: transparent; color: var(--text-color-dark); font-size: 1.3rem; font-weight: bold; cursor: pointer; transition: all 0.3s; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 150px; }
+.role-button { width: 100%; padding: 30px 20px; border: 2px solid var(--primary-color-dark); border-radius: 12px; background-color: transparent; color: var(--text-color-dark); font-size: 1.3rem; font-weight: bold; cursor: pointer; transition: all 0.3s; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 150px; font-family: 'BMJUA', sans-serif; }
 .role-button:hover { background-color: var(--primary-color-dark); color: white; box-shadow: 0 5px 15px rgba(177, 151, 252, 0.3); transform: translateY(-2px); }
 .role-icon { font-size: 3rem; margin-bottom: 10px; }
 #teacher-main-screen { padding-top: 20px; }
 .teacher-options { display: flex; flex-direction: column; gap: 15px; padding: 10px 0; }
 .teacher-menu-btn { padding: 20px 15px; font-size: 1.2rem; }
 #notice-upload-screen, #homework-upload-screen, #private-task-screen, #student-management-screen { padding-top: 20px; }
-#notice-content-textarea, #homework-content-textarea { resize: vertical; }
+#notice-content-textarea, #homework-content-textarea { resize: vertical; font-family: 'BMJUA', sans-serif; }
 .button-group { display: flex; flex-direction: column; gap: 10px; margin-top: 30px; }
-.clno-button.secondary-btn { background-color: #50506e; color: var(--text-color-dark); border: 1px solid #777; margin-top: 0; }
+.clno-button.secondary-btn { background-color: #50506e; color: var(--text-color-dark); border: 1px solid #777; margin-top: 0; font-family: 'BMJUA', sans-serif; }
 .clno-button.secondary-btn:hover { background-color: #6a6a8c; color: white; }
 
 .clno-button.secondary-btn.active {
@@ -212,6 +212,7 @@ body.dark-mode h2 {
 
 .modal-button {
     margin-top: 0 !important; /* clno-button의 margin-top 무시 */
+    font-family: 'BMJUA', sans-serif;
 }
 
 /* 모달 등장 애니메이션 */
@@ -299,6 +300,7 @@ body.dark-mode h2 {
     background-color: #50506e;
     color: var(--text-color-dark);
     margin-top: 0;
+    font-family: 'BMJUA', sans-serif;
 }
 .view-more-btn:hover {
     background-color: #6a6a8c;
@@ -321,6 +323,7 @@ body.dark-mode h2 {
     background-color: #3e3e5c;
     border: 1px solid var(--primary-color-dark);
     transition: background-color 0.3s;
+    font-family: 'BMJUA', sans-serif;
 }
 
 .quick-btn .icon {
@@ -390,6 +393,7 @@ body.dark-mode h2 {
     cursor: pointer;
     font-size: 0.9rem;
     transition: background-color 0.2s, color 0.2s;
+    font-family: 'BMJUA', sans-serif;
 }
 
 .back-button:hover {
