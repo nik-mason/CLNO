@@ -6,14 +6,134 @@
     <title>ClassNote</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
+<body class="dark-mode">
+    <!-- 1. Intro Page -->
     <div id="splash-screen">
-        <img src="{{ url_for('static', filename='logo/logo.png') }}" alt="ClassNote Logo" class="splash-logo">
+        <img src="{{ url_for('static', filename='logo/logo.png') }}" alt="ClassNote Logo" id="app-logo">
     </div>
-    
-    <!-- Main content will be loaded here later -->
-    <div id="main-content" style="display: none;">
-        <h1>Welcome to ClassNote</h1>
+
+    <div id="app-container">
+        <!-- 2. School Select Page -->
+        <div id="school-selection-screen" class="screen animated-screen">
+            <header>
+                <h2>학교 선택</h2>
+            </header>
+            <main>
+                <input type="text" id="search-input" placeholder="학교 이름 검색...">
+                <ul id="school-list"></ul>
+            </main>
+        </div>
+
+        <!-- 3. Grade/Class Input Page -->
+        <div id="class-input-screen" class="screen animated-screen">
+            <header>
+                <h2>학년/반 정보 입력</h2>
+            </header>
+            <main>
+                <form id="class-input-form">
+                    <div class="selection-box">
+                        <label>학년</label>
+                        <div id="grade-selection-buttons" class="button-group-horizontal">
+                            <!-- Grade buttons will be injected by JS -->
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="input-class">반</label>
+                        <input type="number" id="input-class" class="clno-input" placeholder="숫자만 입력" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="input-password">학급 비밀번호</label>
+                        <input type="password" id="input-password" class="clno-input" placeholder="예: 3학년 5반 -> 0503" required>
+                        <p class="guide-text">비밀번호 예시: 1학년 6반 → 0106, 3학년 5반 → 0503</p>
+                    </div>
+                    <button type="submit" class="clno-button">다음</button>
+                </form>
+            </main>
+        </div>
+
+        <!-- 4. Role Select Page -->
+        <div id="role-selection-screen" class="screen animated-screen">
+            <header>
+                <h2>사용자 유형을 선택하세요</h2>
+            </header>
+            <main>
+                <div class="role-options">
+                    <button class="role-button" data-role="student">
+                        <span class="role-icon">🧑‍🎓</span>
+                        학생입니다
+                    </button>
+                    <button class="role-button" data-role="teacher">
+                        <span class="role-icon">🧑‍🏫</span>
+                        선생님입니다
+                    </button>
+                </div>
+            </main>
+        </div>
+
+        <!-- 5. Student Login Page -->
+        <div id="student-login-screen" class="screen animated-screen">
+            <header>
+                <h2>학생 로그인</h2>
+            </header>
+            <main>
+                <form id="student-login-form">
+                    <div class="input-group">
+                        <label for="input-attendance-number">출석번호</label>
+                        <input type="number" id="input-attendance-number" class="clno-input" placeholder="출석번호를 입력하세요" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="input-student-pin">학생 PIN 번호</label>
+                        <input type="password" id="input-student-pin" class="clno-input" placeholder="PIN 번호를 입력하세요" required>
+                        <p class="guide-text">PIN은 학교/학년/반/번호 조합으로 생성됩니다.</p>
+                    </div>
+                    <button type="submit" class="clno-button">로그인</button>
+                </form>
+            </main>
+        </div>
+
+        <!-- 6. Teacher Login Page -->
+        <div id="teacher-login-screen" class="screen animated-screen">
+            <header>
+                <h2>선생님 인증</h2>
+            </header>
+            <main>
+                <form id="teacher-login-form">
+                    <div class="input-group">
+                        <label for="login-teacher-password">비밀번호</label>
+                        <input type="password" id="login-teacher-password" class="clno-input" placeholder="선생님 전용 비밀번호" required>
+                    </div>
+                    <button type="submit" class="clno-button">로그인</button>
+                </form>
+            </main>
+        </div>
+
+        <!-- Student Main Page (Placeholder) -->
+        <div id="student-main-screen" class="screen animated-screen">
+            <header>
+                <h2>학생 메인</h2>
+            </header>
+            <main>
+                <p>학생 페이지입니다.</p>
+            </main>
+        </div>
+
+        <!-- Teacher Main Page (Placeholder) -->
+        <div id="teacher-main-screen" class="screen animated-screen">
+            <header>
+                <h2>선생님 메인</h2>
+            </header>
+            <main>
+                <p>선생님 페이지입니다.</p>
+            </main>
+        </div>
+    </div>
+
+    <!-- Custom Modal -->
+    <div id="modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content animate-pop">
+            <p id="modal-message"></p>
+            <button id="modal-close-btn" class="clno-button modal-button">확인</button>
+        </div>
     </div>
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
