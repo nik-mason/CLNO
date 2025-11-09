@@ -88,5 +88,64 @@ def get_announcements():
         return jsonify(announcements)
     return jsonify({"success": False, "message": "공지사항 데이터를 불러올 수 없습니다."}), 500
 
+@app.route('/api/daily_homework', methods=['GET'])
+def get_daily_homework():
+    school_id = request.args.get('school_id')
+    grade = request.args.get('grade')
+    class_num = request.args.get('class')
+
+    if not all([school_id, grade, class_num]):
+        return jsonify({"success": False, "message": "학교, 학년, 반 정보를 모두 입력해주세요."}), 400
+
+    try:
+        school_id = int(school_id)
+        grade = int(grade)
+        class_num = int(class_num)
+    except (ValueError, TypeError):
+        return jsonify({"success": False, "message": "입력값이 올바르지 않습니다."}), 400
+
+    homeworks = load_data('daily_homework.json')
+    if homeworks is None:
+        return jsonify({"success": False, "message": "숙제 데이터를 불러올 수 없습니다."}), 500
+
+    filtered_homework = [
+        hw for hw in homeworks
+        if hw.get('schoolId') == school_id and hw.get('grade') == grade and hw.get('class') == class_num
+    ]
+
+    return jsonify(filtered_homework)
+
+@app.route('/api/personal_homework', methods=['GET'])
+def get_personal_homework():
+    school_id = request.args.get('school_id')
+    grade = request.args.get('grade')
+    class_num = request.args.get('class')
+    attendance_num = request.args.get('attendance_num')
+
+    if not all([school_id, grade, class_num, attendance_num]):
+        return jsonify({"success": False, "message": "학교, 학년, 반, 출석번호 정보를 모두 입력해주세요."}), 400
+
+    try:
+        school_id = int(school_id)
+        grade = int(grade)
+        class_num = int(class_num)
+        attendance_num = int(attendance_num)
+    except (ValueError, TypeError):
+        return jsonify({"success": False, "message": "입력값이 올바르지 않습니다."}), 400
+
+    personal_homeworks = load_data('personal_homework.json')
+    if personal_homeworks is None:
+        return jsonify({"success": False, "message": "개인 숙제 데이터를 불러올 수 없습니다."}), 500
+
+    filtered_personal_homework = [
+        hw for hw in personal_homeworks
+        if hw.get('schoolId') == school_id and \
+           hw.get('grade') == grade and \
+           hw.get('class') == class_num and \
+           hw.get('attendanceNumber') == attendance_num
+    ]
+
+    return jsonify(filtered_personal_homework)
+
 if __name__ == '__main__':
     app.run(debug=True) 

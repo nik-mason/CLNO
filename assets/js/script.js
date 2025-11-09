@@ -138,6 +138,10 @@ function setupEventListeners() {
     // Student Menu Navigation
     document.getElementById('view-announcements-btn').addEventListener('click', showAnnouncements);
     document.getElementById('back-to-student-main-from-announcements').addEventListener('click', () => showPage('student-main-screen'));
+    document.getElementById('view-daily-homework-btn').addEventListener('click', showDailyHomework);
+    document.getElementById('back-to-student-main-from-daily-homework').addEventListener('click', () => showPage('student-main-screen'));
+    document.getElementById('view-personal-homework-btn').addEventListener('click', showPersonalHomework);
+    document.getElementById('back-to-student-main-from-personal-homework').addEventListener('click', () => showPage('student-main-screen'));
 }
 
 // --- Feature Implementations ---
@@ -175,6 +179,82 @@ async function showAnnouncements() {
     }
 
     showPage('announcements-screen');
+}
+
+async function showDailyHomework() {
+    const homeworkList = document.getElementById('daily-homework-list');
+    homeworkList.innerHTML = '<p>숙제를 불러오는 중...</p>';
+    showPage('daily-homework-screen');
+
+    const homeworks = await apiCall(`/api/daily_homework?school_id=${appState.schoolId}&grade=${appState.grade}&class=${appState.classNum}`);
+    if (!homeworks) {
+        homeworkList.innerHTML = '<p class="empty-message">숙제를 불러오는 데 실패했습니다.</p>';
+        return;
+    }
+
+    homeworkList.innerHTML = ''; // Clear loading message
+
+    if (homeworks.length === 0) {
+        homeworkList.innerHTML = '<p class="empty-message">등록된 숙제가 없습니다.</p>';
+    } else {
+        homeworks
+            .sort((a, b) => new Date(b.uploadDate) - new Date(a.uploadDate)) // Show newest first
+            .forEach(hw => {
+                const hwEl = document.createElement('div');
+                hwEl.className = 'homework-card'; // Similar styling to announcements
+                
+                const tasksHtml = hw.tasks.map(task => 
+                    `<li class="homework-task-item">${task.content}</li>`
+                ).join('');
+
+                hwEl.innerHTML = `
+                    <div class="homework-header">
+                        <h3 class="homework-title">${hw.title}</h3>
+                        <span class="homework-date">마감: ${hw.dueDate}</span>
+                    </div>
+                    <ul class="homework-task-list">${tasksHtml}</ul>
+                `;
+                homeworkList.appendChild(hwEl);
+            });
+    }
+}
+
+async function showPersonalHomework() {
+    const personalHomeworkList = document.getElementById('personal-homework-list');
+    personalHomeworkList.innerHTML = '<p>개인 숙제를 불러오는 중...</p>';
+    showPage('personal-homework-screen');
+
+    const homeworks = await apiCall(`/api/personal_homework?school_id=${appState.schoolId}&grade=${appState.grade}&class=${appState.classNum}&attendance_num=${appState.attendanceNum}`);
+    if (!homeworks) {
+        personalHomeworkList.innerHTML = '<p class="empty-message">개인 숙제를 불러오는 데 실패했습니다.</p>';
+        return;
+    }
+
+    personalHomeworkList.innerHTML = ''; // Clear loading message
+
+    if (homeworks.length === 0) {
+        personalHomeworkList.innerHTML = '<p class="empty-message">등록된 개인 숙제가 없습니다.</p>';
+    } else {
+        homeworks
+            .sort((a, b) => new Date(b.uploadDate) - new Date(a.uploadDate)) // Show newest first
+            .forEach(hw => {
+                const hwEl = document.createElement('div');
+                hwEl.className = 'homework-card'; // Re-use homework-card styling
+                
+                const tasksHtml = hw.tasks.map(task => 
+                    `<li class="homework-task-item">${task.content}</li>`
+                ).join('');
+
+                hwEl.innerHTML = `
+                    <div class="homework-header">
+                        <h3 class="homework-title">${hw.title}</h3>
+                        <span class="homework-date">마감: ${hw.dueDate}</span>
+                    </div>
+                    <ul class="homework-task-list">${tasksHtml}</ul>
+                `;
+                personalHomeworkList.appendChild(hwEl);
+            });
+    }
 }
 
 

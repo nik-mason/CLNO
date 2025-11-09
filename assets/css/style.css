@@ -440,3 +440,62 @@ body.dark-mode h2 {
     padding: 50px 0;
     font-size: 1.1rem;
 }
+
+/* --- [Daily Homework Page Styles] --- */
+
+#daily-homework-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.homework-card {
+    background-color: #2e2e4a;
+    border-radius: 10px;
+    padding: 20px;
+    border-left: 5px solid var(--success-color); /* Green for tasks */
+}
+
+.homework-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px; /* More space for tasks */
+}
+
+.homework-title {
+    font-size: 1.2rem;
+    color: var(--primary-color-light);
+    margin: 0;
+}
+
+.homework-date {
+    font-size: 0.8rem;
+    color: var(--error-color); /* Red for due date */
+}
+
+.homework-task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.homework-task-item {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-color-dark);
+    padding: 8px 0;
+    border-bottom: 1px dashed #444;
+}
+
+.homework-task-item:last-child {
+    border-bottom: none;
+}
+
+/* --- [Personal Homework Page Styles] --- */
+
+#personal-homework-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
