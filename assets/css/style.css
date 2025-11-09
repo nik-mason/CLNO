@@ -338,3 +338,105 @@ body.dark-mode h2 {
 .quick-btn:hover {
     background-color: #50506e;
 }
+
+/* --- [학생 메뉴 및 공지사항 페이지 스타일] --- */
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.menu-button {
+    width: 100%;
+    padding: 20px;
+    border: 1px solid var(--primary-color-dark);
+    border-radius: 10px;
+    background-color: #3e3e5c;
+    color: var(--text-color-dark);
+    font-size: 1.2rem;
+    font-family: 'BMJUA', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    text-align: center;
+}
+
+.menu-button:hover {
+    background-color: var(--primary-color-dark);
+    color: white;
+    transform: translateY(-2px);
+}
+
+#announcements-screen header, #daily-homework-screen header, #personal-homework-screen header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#announcements-screen h2, #daily-homework-screen h2, #personal-homework-screen h2 {
+    margin: 0; /* h2의 기본 마진 제거 */
+}
+
+.back-button {
+    background-color: transparent;
+    color: var(--primary-color-light);
+    border: 1px solid var(--primary-color-light);
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.back-button:hover {
+    background-color: var(--primary-color-light);
+    color: #1a1a2e;
+}
+
+#announcements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.announcement-card {
+    background-color: #2e2e4a;
+    border-radius: 10px;
+    padding: 20px;
+    border-left: 5px solid var(--primary-color-dark);
+}
+
+.announcement-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.announcement-title {
+    font-size: 1.2rem;
+    color: var(--primary-color-light);
+    margin: 0;
+}
+
+.announcement-date {
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+.announcement-content {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-color-dark);
+}
+
+.empty-message {
+    text-align: center;
+    color: #999;
+    padding: 50px 0;
+    font-size: 1.1rem;
+}

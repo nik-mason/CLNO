@@ -107,13 +107,18 @@
             </main>
         </div>
 
-        <!-- Student Main Page (Placeholder) -->
+        <!-- Student Main Page -->
         <div id="student-main-screen" class="screen animated-screen">
             <header>
-                <h2>학생 메인</h2>
+                <h2>[학생 전용 페이지]</h2>
             </header>
             <main>
-                <p>학생 페이지입니다.</p>
+                <h3>메뉴</h3>
+                <ul class="menu-list">
+                    <li><button class="menu-button" id="view-announcements-btn">공지사항 보기</button></li>
+                    <li><button class="menu-button" id="view-daily-homework-btn">오늘의 숙제 보기</button></li>
+                    <li><button class="menu-button" id="view-personal-homework-btn">개인 숙제 보기</button></li>
+                </ul>
             </main>
         </div>
 
@@ -124,6 +129,17 @@
             </header>
             <main>
                 <p>선생님 페이지입니다.</p>
+            </main>
+        </div>
+
+        <!-- Announcements Page -->
+        <div id="announcements-screen" class="screen animated-screen">
+            <header>
+                <h2>공지사항</h2>
+                <button id="back-to-student-main-from-announcements" class="back-button">뒤로</button>
+            </header>
+            <main id="announcements-list">
+                <!-- Announcements will be loaded here -->
             </main>
         </div>
     </div>

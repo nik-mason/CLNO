@@ -81,5 +81,12 @@ def login_student():
     except (ValueError, TypeError):
         return jsonify({"success": False, "message": "입력값이 올바르지 않습니다."}), 400
 
+@app.route('/api/announcements', methods=['GET'])
+def get_announcements():
+    announcements = load_data('announcements.json')
+    if announcements is not None:
+        return jsonify(announcements)
+    return jsonify({"success": False, "message": "공지사항 데이터를 불러올 수 없습니다."}), 500
+
 if __name__ == '__main__':
     app.run(debug=True)

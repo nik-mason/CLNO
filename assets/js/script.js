@@ -134,7 +134,49 @@ function setupEventListeners() {
         });
         if (result?.success) showPage('teacher-main-screen');
     });
+
+    // Student Menu Navigation
+    document.getElementById('view-announcements-btn').addEventListener('click', showAnnouncements);
+    document.getElementById('back-to-student-main-from-announcements').addEventListener('click', () => showPage('student-main-screen'));
 }
+
+// --- Feature Implementations ---
+
+async function showAnnouncements() {
+    const announcements = await apiCall('/api/announcements');
+    if (!announcements) return;
+
+    const announcementsList = document.getElementById('announcements-list');
+    announcementsList.innerHTML = ''; // Clear previous content
+
+    const filteredAnnouncements = announcements.filter(ann =>
+        ann.schoolId == appState.schoolId &&
+        ann.grade == appState.grade &&
+        ann.class == appState.classNum
+    );
+
+    if (filteredAnnouncements.length === 0) {
+        announcementsList.innerHTML = '<p class="empty-message">등록된 공지사항이 없습니다.</p>';
+    } else {
+        filteredAnnouncements
+            .sort((a, b) => new Date(b.uploadDate) - new Date(a.uploadDate)) // Show newest first
+            .forEach(ann => {
+                const annEl = document.createElement('div');
+                annEl.className = 'announcement-card';
+                annEl.innerHTML = `
+                    <div class="announcement-header">
+                        <h3 class="announcement-title">${ann.title}</h3>
+                        <span class="announcement-date">${ann.uploadDate}</span>
+                    </div>
+                    <p class="announcement-content">${ann.content.replace(/\n/g, '<br>')}</p>
+                `;
+                announcementsList.appendChild(annEl);
+            });
+    }
+
+    showPage('announcements-screen');
+}
+
 
 // Restoring the robust startup logic
 window.addEventListener('DOMContentLoaded', () => {
