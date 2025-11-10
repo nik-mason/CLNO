@@ -237,4 +237,4 @@ def upload_personal_homework():
         return jsonify({"success": False, "message": "숙제 저장에 실패했습니다."}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True) 
+    app.run(host='0.0.0.0', debug=True) 

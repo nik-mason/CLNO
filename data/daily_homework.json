@@ -169,22 +169,23 @@
       }
     ]
   },
+
   {
-    "id": 11,
+    "id": 12,
     "schoolId": 1,
-    "grade": 3,
-    "class": 5,
+    "grade": 1,
+    "class": 1,
     "uploadDate": "2025-11-09",
-    "dueDate": "2025-11-05",
-    "title": "153",
+    "dueDate": "2025-11-21",
+    "title": "수학 숙제",
     "tasks": [
       {
         "id": 1,
-        "content": "135"
+        "content": "수익 22p 까지"
       },
       {
         "id": 2,
-        "content": "135"
+        "content": "수학책 45p까지"
       }
     ]
   }

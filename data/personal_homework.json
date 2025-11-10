@@ -159,35 +159,20 @@
       }
     ]
   },
+
   {
-    "id": 11,
+    "id": 12,
     "schoolId": 1,
     "grade": 1,
     "class": 1,
     "attendanceNumber": 1,
     "uploadDate": "2025-11-09",
-    "dueDate": "2025-11-05",
-    "title": "1",
+    "dueDate": "2025-11-22",
+    "title": "일기",
     "tasks": [
       {
         "id": 1,
-        "content": "1"
-      },
-      {
-        "id": 2,
-        "content": "1"
-      },
-      {
-        "id": 3,
-        "content": "1"
-      },
-      {
-        "id": 4,
-        "content": "1"
-      },
-      {
-        "id": 5,
-        "content": "1"
+        "content": "(1번) 안해온 일기 쓰기"
       }
     ]
   }
